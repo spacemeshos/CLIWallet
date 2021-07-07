@@ -37,7 +37,7 @@ func yesOrNoQuestion(msg string) string {
 			break
 		}
 
-		fmt.Println(printPrefix, "invalid command.")
+		fmt.Println("invalid command.")
 	}
 
 	return input
@@ -50,7 +50,7 @@ func multipleChoice(names []string) int {
 	}
 	for {
 		for n, ac := range names {
-			fmt.Println(n+1, printPrefix, ac)
+			fmt.Println(n+1, ac)
 		}
 		input = prompt.Input(prefix,
 			emptyComplete,
@@ -69,7 +69,7 @@ func multipleChoice(names []string) int {
 			return 0
 		}
 
-		fmt.Println(printPrefix, "invalid command.")
+		fmt.Println("invalid command.")
 
 	}
 }
@@ -86,7 +86,7 @@ func inputNotBlank(msg string) string {
 			break
 		}
 
-		fmt.Println(printPrefix, "please enter a value.")
+		fmt.Println("please enter a value.")
 	}
 
 	return input

@@ -3,11 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
-	"os"
-
 	"github.com/spacemeshos/smrepl/client"
 	"github.com/spacemeshos/smrepl/log"
 	"github.com/spacemeshos/smrepl/repl"
+	"os"
 )
 
 func main() {

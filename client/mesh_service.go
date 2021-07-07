@@ -39,9 +39,9 @@ func (c *gRPCClient) GetMeshTransactions(address gosmtypes.Address, offset uint3
 		}
 	}
 	// hack alert: for now, we return the number of filtered results and not the results returned from the api
-	// because they include duplicated transactions in case where a transaction is on more than 1 mesh block
-
+	// because they include duplicated transactions in case where a transaction is on more than one mesh block
 	// todo: think about default sorting
+
 	return txs, uint32(len(txs)), nil
 }
 
@@ -75,6 +75,7 @@ func (c *gRPCClient) GetMeshActivations(address gosmtypes.Address, offset uint32
 	return activations, resp.TotalResults, nil
 }
 
+// GetMeshInfo returns basic mesh data
 func (c *gRPCClient) GetMeshInfo() (*common.NetInfo, error) {
 	netInfo := &common.NetInfo{}
 	ms := c.getMeshServiceClient()
@@ -119,7 +120,7 @@ func (c *gRPCClient) GetMeshInfo() (*common.NetInfo, error) {
 	if err != nil {
 		return nil, err
 	}
-	netInfo.MaxTxsPerSec = maxTxsPerSec.Maxtxpersecond.Value
+	netInfo.MaxTxsPerSec = maxTxsPerSec.MaxTxsPerSecond.Value
 
 	return netInfo, nil
 }

@@ -8,27 +8,27 @@ import (
 // doesn't implement the methods.
 type Mock struct{}
 
-// CreateAccount creates accountInfo.
+// CreateAccount creates accountInfo
 func (Mock) CreateAccount(generatePassphrase bool, accountInfo string) error {
 	return nil
 }
 
-// CurrentAccount returns local accountInfo.
+// LocalAccount returns local accountInfo
 func (Mock) LocalAccount() common.LocalAccount {
 	return common.LocalAccount{}
 }
 
-// Unlock unlock local accountInfo or the accountInfo by passphrase.
+// Unlock unlock local accountInfo or the accountInfo by passphrase
 func (Mock) Unlock(passphrase string) error {
 	return nil
 }
 
-// IsAccountUnLock checks if the accountInfo with id is unlock.
+// IsAccountUnLock checks if the accountInfo with id is unlock
 func (Mock) IsAccountUnLock(id string) bool {
 	return false
 }
 
-// Lock locks local accountInfo or the accountInfo by passphrase.
+// Lock locks local accountInfo or the accountInfo by passphrase
 func (Mock) Lock(passphrase string) error {
 	return nil
 }
@@ -37,12 +37,12 @@ func (Mock) Lock(passphrase string) error {
 func (Mock) AccountInfo(id string) {
 }
 
-// Transfer transfers the amount from an accountInfo to the other.
+// Transfer transfers the amount from an accountInfo to the other
 func (Mock) Transfer(from, to, amount, passphrase string) error {
 	return nil
 }
 
-// SetVariables sets params or CLI flags values.
+// SetVariables sets params or CLI flags values
 func (Mock) SetVariables(params, flags []string) error {
 	return nil
 }
@@ -56,18 +56,17 @@ func (Mock) GetVariable(key string) string {
 	return ""
 }
 
-// NeedRestartNode checks if the params and flags that will be set need
-// restart the node.
+// NeedRestartNode checks if the params and flags that will be set need restart the node
 func (Mock) NeedRestartNode(params, flags []string) bool {
 	return false
 }
 
-// Restart restarts node.
+// Restart restarts node
 func (Mock) Restart(params, flags []string) error {
 	return nil
 }
 
-// Setup setup POST.
+// Setup setup POST
 func (Mock) Setup(allocation string) error {
 	return nil
 }

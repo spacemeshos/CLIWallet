@@ -14,17 +14,20 @@ func (r *repl) printAllAccounts() {
 		return
 	}
 
-	for _, a := range accounts {
+	for i, a := range accounts {
 
-		fmt.Println(printPrefix, "Address:", gosmtypes.BytesToAddress(a.AccountId.Address).String())
+		fmt.Println("Address:", gosmtypes.BytesToAddress(a.AccountId.Address).String())
 
 		balance := uint64(0)
 		if a.StateCurrent.Balance != nil {
 			balance = a.StateCurrent.Balance.Value
 		}
 
-		fmt.Println(printPrefix, "Balance:", balance, coinUnitName)
-		fmt.Println(printPrefix, "Nonce:", a.StateCurrent.Counter)
-		fmt.Println(printPrefix, "-----")
+		if i != 0 {
+			fmt.Println("-----")
+		}
+
+		fmt.Println("Balance:", balance, coinUnitName)
+		fmt.Println("Nonce:", a.StateCurrent.Counter)
 	}
 }

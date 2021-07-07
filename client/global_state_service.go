@@ -17,7 +17,7 @@ func (c *gRPCClient) GlobalStateHash() (*apitypes.GlobalStateHash, error) {
 	}
 }
 
-// AccountInfo returns basic account data such as balance and nonce from the global state
+// AccountState returns basic account data such as balance and nonce from the global state
 func (c *gRPCClient) AccountState(address gosmtypes.Address) (*apitypes.Account, error) {
 	gsc := c.getGlobalStateServiceClient()
 	resp, err := gsc.Account(context.Background(), &apitypes.AccountRequest{
@@ -91,7 +91,7 @@ func (c *gRPCClient) AccountRewardsStream(address gosmtypes.Address) (apitypes.G
 	return c.getAccountStream(address, apitypes.AccountDataFlag_ACCOUNT_DATA_FLAG_REWARD)
 }
 
-// AccountRewardsStream returns a stream of account changes
+// AccountUpdatesStream returns a stream of account changes
 func (c *gRPCClient) AccountUpdatesStream(address gosmtypes.Address) (apitypes.GlobalStateService_AccountDataStreamClient, error) {
 	return c.getAccountStream(address, apitypes.AccountDataFlag_ACCOUNT_DATA_FLAG_ACCOUNT)
 }

@@ -20,10 +20,12 @@ func (r *repl) printRewards(address gosmtypes.Address) {
 		return
 	}
 
-	fmt.Println(printPrefix, fmt.Sprintf("Total rewards: %d", total))
-	for _, r := range rewards {
+	fmt.Printf("Total rewards: %d\n", total)
+	for i, r := range rewards {
+		if i != 0 {
+			fmt.Println("-----")
+		}
 		printReward(r)
-		fmt.Println(printPrefix, "-----")
 	}
 }
 
@@ -44,7 +46,7 @@ func (r *repl) printAccountRewardsStream() {
 		return
 	}
 
-	fmt.Println(printPrefix, "Listening to new rewards for address: ", addr.String())
+	fmt.Println("Listening to new rewards for address: ", addr.String())
 
 	done := make(chan bool)
 	go func() {
@@ -75,7 +77,7 @@ func (r *repl) printAccountUpdatesStream() {
 		return
 	}
 
-	fmt.Println(printPrefix, "Listening for new updates for address: ", address.String())
+	fmt.Println("Listening for new updates for address: ", address.String())
 
 	done := make(chan bool)
 	go func() {
@@ -104,8 +106,8 @@ func (r *repl) printGlobalState() {
 		return
 	}
 
-	fmt.Println(printPrefix, "Hash:", "0x"+hex.EncodeToString(resp.RootHash))
-	fmt.Println(printPrefix, "Layer:", resp.Layer.Number)
+	fmt.Println("Hash:", "0x"+hex.EncodeToString(resp.RootHash))
+	fmt.Println("Layer:", resp.Layer.Number)
 }
 
 // printAccountState prints an account's global state
